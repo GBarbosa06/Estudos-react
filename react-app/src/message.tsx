@@ -5,7 +5,7 @@
 function Message(){
     const nome = 'Guilherme'
     return (
-        <div>Olá {nome}</div>
+        <div className="logo">Olá {nome}</div>
     ) //esse código que será renderizado não será enviado como HTML, mas sim um componente react que será convertido do HTML
 }
 
