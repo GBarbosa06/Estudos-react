@@ -6,6 +6,7 @@ import ChangeMessageState from './components/ChangeMessageState';
 
 function App() {
   const [pagLista, setPagLista] = useState(false);
+  const [pagMessage, setPagMessage] = useState(false);
 
   const [message, setMessage] = useState("")
 
@@ -13,15 +14,19 @@ function App() {
     setMessage(msg);
   }
 
-
   return (
     <div>
       <div>
         {pagLista && <ListaDeNomes />}
-        <button onClick={() => setPagLista(!pagLista)}>Ativar/Desativar o resultado da aula lista</button>
+        <button onClick={() => setPagLista(!pagLista)}>Ativar/Desativar o resultado da aula lista de nomes</button>
       </div>
-      <Messages msg={message} />
-      <ChangeMessageState MessageChoose={MessageChange}/>
+
+      <div>
+        {pagMessage && <Messages msg={message} />}
+        {pagMessage && <ChangeMessageState MessageChoose={MessageChange}/>}
+        <button onClick={() => setPagMessage(!pagMessage)}>Ativar/Desativar o resultado da aula messages (state lift)</button>
+      </div>
+
     </div>
   )
 }
