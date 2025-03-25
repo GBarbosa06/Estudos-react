@@ -1,15 +1,15 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { div } from 'motion/react-client'
+import ListaDeNomes from './ListaDeNomes'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [pagLista, setPagLista] = useState(true);
+
 
   return (
     <div>
-      
+      {pagLista && <ListaDeNomes />}
+      <button onClick={() => setPagLista(!pagLista)}>Ativar/Desativar o resultado da aula lista</button>
     </div>
   )
 }
