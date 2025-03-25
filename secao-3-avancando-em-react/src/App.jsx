@@ -3,7 +3,7 @@ import './App.css'
 import ListaDeNomes from './ListaDeNomes'
 
 function App() {
-  const [pagLista, setPagLista] = useState(true);
+  const [pagLista, setPagLista] = useState(false);
 
 
   return (
