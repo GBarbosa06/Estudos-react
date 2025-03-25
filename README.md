@@ -1,2 +1,1 @@
-# Lista de Leitura
- Repositório usado no curso de react native - Dev Samurai
+Repositório destinado ao estudo e pratica do react, vindo de cursos diversos.
