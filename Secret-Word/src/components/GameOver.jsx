@@ -1,9 +1,9 @@
 import "./GameOver.css"
 
-const Gameover = () => {
+const GameOver = () => {
   return (
-    <div>Gameover</div>
+    <div>GameOver</div>
   )
 }
 
-export default Gameover
+export default GameOver
