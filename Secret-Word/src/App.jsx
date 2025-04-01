@@ -27,10 +27,14 @@ function App() {
     setGameStage(stages[1].name)
   }
 
+  const verifyLetter = () => {
+    setGameStage(stages[3].name)
+  }
+
   return (
     <div className='App'>
       {gameStage === 'start' && <StartScreen startGame={startGame} />}
-      {gameStage === 'game' && <Game />}
+      {gameStage === 'game' && <Game verifyLetter={verifyLetter} />}
       {gameStage === 'end' && <GameOver />}
       
     </div>
