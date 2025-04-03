@@ -35,6 +35,7 @@ function App() {
 
   //começa o jogo
   const startGame = () =>{
+    clearAllLetters();
     //pick word and category
       //random category
       const categories = Object.keys(words);
@@ -72,17 +73,31 @@ function App() {
       setWrongLetters((actualWrongLetters) => [...actualWrongLetters, normalizedLetter])
       setGuesses((actualGuesses) => actualGuesses - 1)
     }
- 
-    
   }
 
+  const clearAllLetters = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  }
+
+  //check loss condition
   useEffect(() => {
     if(guesses <= 0){
       setGameStage(stages[2].name)
-      setGuessedLetters([]);
-      setWrongLetters([]);
+
     }
   }, [guesses])
+
+  //check win condition
+  useEffect(() => {
+    const uniqueLetters = [... new Set(letters)];
+
+    if(guessedLetters.length === uniqueLetters.length){
+      setScore((actualScore) => actualScore += 100)
+
+      startGame();
+    }
+  }, [guessedLetters])
 
   //recomeça o jogo
   const retry = () => {
