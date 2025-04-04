@@ -16,9 +16,9 @@ function App() {
     const data = await res.json();
 
     setProducts(data);
-  }
-  fetchData();
-}, [])
+    }
+    fetchData();
+  }, [])
 
 
 
