@@ -8,6 +8,9 @@ const url = "http://localhost:3000/products";
 function App() {
   const [products, setProducts] = useState([]);
 
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +23,9 @@ function App() {
     fetchData();
   }, [])
 
+  const handleSubmit = async (e) =>{
+
+  }
 
 
 
@@ -33,6 +39,20 @@ function App() {
           </li>
         ))}
       </ul>
+      <div className="add-product">
+        <form onSubmit={handleSubmit}>
+        <label>
+            Nome do produto:
+            <input type="text" name='name' value={name} onChange={(e) => setName(e.target.value)} />
+          </label>
+          <label>
+            Preço:
+            <input type="number" name='price' value={price} onChange={(e) => setPrice(e.target.value)} />
+          </label>
+          <input type="submit" value="Criar produto" />
+          
+        </form>
+      </div>
     </div>
   )
 }
