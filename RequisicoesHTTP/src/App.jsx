@@ -24,7 +24,19 @@ function App() {
   }, [])
 
   const handleSubmit = async (e) =>{
+    e.preventDefault();
 
+    const product = {
+      name,
+      price,
+    }
+    const res = await fetch(url, {
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(product),
+    });
   }
 
 
