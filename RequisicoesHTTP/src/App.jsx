@@ -6,7 +6,7 @@ import { useFetch } from './Hooks/useFetch';
 const url = "http://localhost:3000/products";
 
 function App() {
-  const {data, httpConfig, loading} = useFetch(url);
+  const {data, httpConfig, loading, error} = useFetch(url);
   const [products, setProducts] = useState(data);
 
 
@@ -54,6 +54,7 @@ function App() {
     <div className='App'>
       <h1>Lista de produtos</h1>
       {loading && <p>Carregando dados...</p>}
+      {error && <p>{error}</p>}
       <ul>
         {data && data.map((product) => (
           <li key={product.id}>
