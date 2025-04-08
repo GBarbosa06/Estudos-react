@@ -1,16 +1,19 @@
 import './App.css'
 
 import { useState, useEffect } from 'react'
+import { useFetch } from './Hooks/useFetch';
 
 const url = "http://localhost:3000/products";
 
 function App() {
-  const [products, setProducts] = useState([]);
+  const {data} = useFetch(url);
+  const [products, setProducts] = useState(data);
+
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
 
-  useEffect(() => {
+/*   useEffect(() => {
     const fetchData = async () => {
     const res = await fetch (url);
 
@@ -19,7 +22,7 @@ function App() {
     setProducts(data);
     }
     fetchData();
-  }, [])
+  }, []) */
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
@@ -36,6 +39,7 @@ function App() {
       body: JSON.stringify(product),
     });
 
+    //atualizar dinamicamente caso necessário na tela:
     const addedProduct = await res.json();
     setProducts((prevProducts) => [...prevProducts, addedProduct])
 
@@ -48,7 +52,7 @@ function App() {
     <div className='App'>
       <h1>Lista de produtos</h1>
       <ul>
-        {products.map((product) => (
+        {data && data.map((product) => (
           <li key={product.id}>
             {product.name} - R$ {product.price}
           </li>
