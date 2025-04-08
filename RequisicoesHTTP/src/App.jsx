@@ -6,7 +6,7 @@ import { useFetch } from './Hooks/useFetch';
 const url = "http://localhost:3000/products";
 
 function App() {
-  const {data} = useFetch(url);
+  const {data, httpConfig} = useFetch(url);
   const [products, setProducts] = useState(data);
 
 
@@ -31,7 +31,7 @@ function App() {
       name,
       price,
     }
-    const res = await fetch(url, {
+    /* const res = await fetch(url, {
       method: "POST",
       headers:{
         "Content-Type": "application/json"
@@ -41,7 +41,9 @@ function App() {
 
     //atualizar dinamicamente caso necessário na tela:
     const addedProduct = await res.json();
-    setProducts((prevProducts) => [...prevProducts, addedProduct])
+    setProducts((prevProducts) => [...prevProducts, addedProduct]); */
+
+    httpConfig(product, "POST")    ;
 
     setName("");
     setPrice("");

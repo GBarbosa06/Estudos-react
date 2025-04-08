@@ -15,7 +15,8 @@ export const useFetch = (url) => {
                     "Content-type" : "application/json"
                 },
                 body: JSON.stringify(data)
-            })
+            });
+            setMethod(method);
         }
     }
 
@@ -26,7 +27,7 @@ export const useFetch = (url) => {
             setData(json);
         }
         fetchData();
-    }, [url])
+    }, [url, callFetch])
 
     useEffect(() =>{
         const httpRequest = async () => {
@@ -39,8 +40,8 @@ export const useFetch = (url) => {
             }
         }
         httpRequest();
-    }, [config])
+    }, [config, method, url]);
 
-    return { data, httpConfig }
+    return { data, httpConfig };
 
 }
