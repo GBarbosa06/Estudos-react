@@ -1,4 +1,3 @@
-import { li } from 'motion/react-client';
 import './App.css'
 
 import { useState, useEffect } from 'react'
@@ -10,7 +9,6 @@ function App() {
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,8 +35,13 @@ function App() {
       },
       body: JSON.stringify(product),
     });
-  }
 
+    const addedProduct = await res.json();
+    setProducts((prevProducts) => [...prevProducts, addedProduct])
+
+    setName("");
+    setPrice("");
+  }
 
 
   return (
@@ -47,7 +50,7 @@ function App() {
       <ul>
         {products.map((product) => (
           <li key={product.id}>
-            {product.name} - R$ {product.price.toFixed(2)}
+            {product.name} - R$ {product.price}
           </li>
         ))}
       </ul>
