@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 export const useFetch = (url) => {
     const [data, setData] = useState(null);
+    const [itemId, setItemId] = useState(null);
 
     const [config, setConfig] = useState(null);
     const [method, setMethod] = useState(null);
@@ -11,7 +12,6 @@ export const useFetch = (url) => {
     
     const [error, setError] = useState(null);
 
-    const [itemId, setItemId] = useState(null);
 
     const httpConfig = (data, method) => {
         if (method === "POST") {
