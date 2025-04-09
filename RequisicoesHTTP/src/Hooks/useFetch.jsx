@@ -22,6 +22,15 @@ export const useFetch = (url) => {
             });
             setMethod(method);
         }
+        else if (method === "DELETE") {
+            setConfig({
+                method,
+                headers: {"Content-type" : "application/json"}
+
+            });
+            setMethod(method);
+            setData(data)
+        }
     }
 
     useEffect(() => {
@@ -45,10 +54,14 @@ export const useFetch = (url) => {
 
     useEffect(() =>{
         const httpRequest = async () => {
-            if(method==="POST"){
-                let fetchOptions = [url, config];
-    
-                const res = await fetch(...fetchOptions);
+            if(method==="POST"){    
+                const res = await fetch(url, config);
+                const json = await res.json();
+                setCallFetch(json);
+            }
+            else if (method === "DELETE") {
+                const deleteUrl = `${url}/${data}`;
+                const res = await fetch(deleteUrl, config);
                 const json = await res.json();
                 setCallFetch(json);
             }
