@@ -11,6 +11,8 @@ export const useFetch = (url) => {
     
     const [error, setError] = useState(null);
 
+    const [itemId, setItemId] = useState(null);
+
     const httpConfig = (data, method) => {
         if (method === "POST") {
             setConfig({
@@ -29,7 +31,7 @@ export const useFetch = (url) => {
 
             });
             setMethod(method);
-            setData(data)
+            setItemId(data)
         } 
     }
 
@@ -60,10 +62,10 @@ export const useFetch = (url) => {
                 setCallFetch(json);
             }
             else if (method === "DELETE") {
-                /* const deleteUrl = `${url}/${data}`;
+                const deleteUrl = `${url}/${itemId}`;
                 const res = await fetch(deleteUrl, config);
                 const json = await res.json();
-                setCallFetch(json); */
+                setCallFetch(json);
             }
         }
         httpRequest();

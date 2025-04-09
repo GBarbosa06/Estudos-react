@@ -11,9 +11,14 @@
       "price": 90
     },
     {
-      "id": "3",
-      "name": "Boné aba reta",
-      "price": 29.9
+      "id": "986a",
+      "name": "Xbox Series S",
+      "price": "2500"
+    },
+    {
+      "id": "ad2a",
+      "name": "Controle",
+      "price": "250"
     }
   ]
 }
