@@ -55,18 +55,19 @@ export const useFetch = (url) => {
     }, [url, callFetch])
 
     useEffect(() =>{
+        let json;
         const httpRequest = async () => {
             if(method==="POST"){    
                 const res = await fetch(url, config);
                 const json = await res.json();
-                setCallFetch(json);
+                
             }
             else if (method === "DELETE") {
                 const deleteUrl = `${url}/${itemId}`;
                 const res = await fetch(deleteUrl, config);
                 const json = await res.json();
-                setCallFetch(json);
             }
+            setCallFetch(json);
         }
         httpRequest();
     }, [config, method, url]);
