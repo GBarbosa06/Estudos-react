@@ -47,7 +47,7 @@ function App() {
     const addedProduct = await res.json();
     setProducts((prevProducts) => [...prevProducts, addedProduct]); */
 
-    httpConfig(product, "POST")    ;
+    httpConfig(product, "POST");
 
     setName("");
     setPrice("");
