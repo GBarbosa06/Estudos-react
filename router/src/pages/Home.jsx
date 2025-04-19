@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div>
         <h1>Produtos</h1>
-        {Error && <p>{error}</p>}
+        {error && <p>{error}</p>}
         {loading && <p>Carregando...</p>}
         {items && items.length === 0 && <p>Não há produtos cadastrados!</p>}
         {items && items.length > 0 && (
