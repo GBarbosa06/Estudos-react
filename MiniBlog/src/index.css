@@ -5,8 +5,7 @@ body{
     font-family: 'Work Sans', sans-serif;
 }
 
-input::placeholder,
-textarea::placeholder{
+input::placeholder, textarea::placeholder{
     font-family: 'Work Sans', sans-serif;
 }
 
