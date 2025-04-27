@@ -9,8 +9,7 @@ input::placeholder, textarea::placeholder{
     font-family: 'Work Sans', sans-serif;
 }
 
-input:focus,
-textarea:focus{
+input:focus, textarea:focus{
     outline: none;
 }
 
