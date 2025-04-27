@@ -1,10 +1,12 @@
-import styles from './Login.module.css'
+import styles from './Register.module.css'
+
+import { useState, useEffect } from 'react'
 
 
 const Register = () => {
   return (
     <div>
-        <h2>Register</h2>
+
     </div>
   )
 }
