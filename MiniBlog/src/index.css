@@ -97,6 +97,11 @@ input, textarea {
 
 button[disabled]{
     background-color: #aaa;
+    cursor: not-allowed;
+}
+button[disabled]:hover{
+    background-color: #aaa;
+    cursor: not-allowed;
 }
 
 .container .error {

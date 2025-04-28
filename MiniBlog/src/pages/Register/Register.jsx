@@ -1,4 +1,4 @@
-import { p } from 'motion/react-client';
+import { useAuthentication } from '../../hooks/useAuthentication';
 import styles from './Register.module.css'
 
 import { useState, useEffect } from 'react'
@@ -9,7 +9,9 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
+
+  const {createUser, error: authError, loading} = useAuthentication();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,8 +29,16 @@ const Register = () => {
       return;
 
     } 
-  }
 
+    
+    console.log(user);
+    const res = await createUser(user);
+  };
+  useEffect(() => {
+    if(authError){
+      setError(authError);
+    }
+  }, [authError])
   return (
     <div className={styles.register}>
         <h1>Cadastre-se para postar</h1> 
@@ -79,10 +89,10 @@ const Register = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </label>
-          <button className='btn'>
-            Cadastrar
-          </button>
-          {error && <p className='error'>As senhas precisam ser iguais!</p>}
+          {!loading && <button className='btn'>Cadastrar</button>}
+          {loading && <button className='btn' disabled>Aguarde...</button>}
+
+          {error && <p className='error'>{error}</p>}
           <p>Já tem uma conta? <a href="/login">Clique aqui</a></p>
         </form>
     </div>
