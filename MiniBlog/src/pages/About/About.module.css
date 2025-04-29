@@ -6,8 +6,15 @@
 }
 
 .about p{
-    color: #aaa;
-    margin-bottom: 2em;
+    color: #646464;
+    margin-bottom: 1em;
+}
+
+.about p a{
+    display: inline;
+    font-weight: 600;
+    padding: 0;
+    color: #646464;
 }
 
 .about a{
