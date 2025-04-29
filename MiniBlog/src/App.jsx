@@ -14,7 +14,6 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import About from './pages/About/About'
 import Home from './pages/Home/Home'
-import Posts from './pages/Posts/Posts'
 import CreatePost from './pages/CreatePost/CreatePost';
 import Dashboard from './pages/Dashboard/Dashboard';
 
@@ -43,12 +42,11 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={!user ? <Login /> : <Navigate to="/" />} />
+              <Route path='/register' element={!user ? <Register /> : <Navigate to="/" />} />
               <Route path="/about" element={<About />} />
-              <Route path="/posts" element={<Posts />} />
-              <Route path="/posts/create" element={<CreatePost />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/posts/create" element={user ? <CreatePost /> : <Navigate to="/login" />} />
+              <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </div>
