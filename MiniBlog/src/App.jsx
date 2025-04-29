@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className="App">
-      <AuthProvider>
+      <AuthProvider value={{user}}>
         <BrowserRouter>
           <Navbar />
           <div className="container">
