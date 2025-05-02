@@ -1,4 +1,4 @@
-import { db } from "../firebase/config";
+import { db, app } from "../firebase/config";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { useState, useEffect } from "react";
 
@@ -11,7 +11,7 @@ export const useAuthentication = () => {
         //dealing with memory leaks
     const [cancelled, setCancelled] = useState(false);
 
-    const auth = getAuth();
+    const auth = getAuth(app);
     const checkIfIsCancelled = () => {
         if(cancelled) {
             return;
@@ -74,7 +74,7 @@ export const useAuthentication = () => {
             else{
                 systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde."
             }
-            
+
             setError(systemErrorMessage);
             setLoading(false);
         }
