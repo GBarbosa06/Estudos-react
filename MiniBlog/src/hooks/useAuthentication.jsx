@@ -18,6 +18,7 @@ export const useAuthentication = () => {
         }
     }
 
+    //register
     const createUser = async (data) => {
         checkIfIsCancelled();
         setError(null);
@@ -51,6 +52,22 @@ export const useAuthentication = () => {
         }
                
     };
+
+    //logout
+    const logout = () => {
+        checkIfIsCancelled();
+        setError(null);
+        setLoading(true);
+        try {
+            signOut(auth); //esse é o método de logout do firebase, não precisaria do try catch, mas é bom para evitar erros
+            setLoading(false);
+        } catch (error) {
+            console.log(error.message);
+            setError("Ocorreu um erro ao sair.");
+            setLoading(false);
+        }
+    }
+
     useEffect(() => {
         return () => setCancelled(true);
     }, [])
@@ -58,6 +75,7 @@ export const useAuthentication = () => {
     return {
         auth,
         createUser,
+        logout,
         error,
         loading,
     }
