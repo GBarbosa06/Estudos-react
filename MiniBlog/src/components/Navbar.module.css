@@ -28,9 +28,6 @@
     padding: .4em .6em;
     text-decoration: none;
     font-weight: 600;
-}
-button{
-    font-weight: 600;
     cursor: pointer;
 }
 .active{

@@ -1,7 +1,6 @@
 import styles from './Login.module.css'
 import { useState, useEffect } from 'react'
 import { useAuthentication } from '../../hooks/useAuthentication'
-import { useAuthValue } from '../../context/AuthContext'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +35,6 @@ const Login = () => {
     <div className={styles.login}>
         <h1>Entrar</h1> 
         <p>Faça o login para poder utilizar o sistema</p>
-        <p>O cadastro é gratuito e rápido!</p>
         <form onSubmit={handleSubmit}>
           <label>
             <span>Email:</span>
