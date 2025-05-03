@@ -71,6 +71,9 @@ export const useAuthentication = () => {
             else if(error.message.includes("wrong-password")){
                 systemErrorMessage = "Senha incorreta.";
             }
+            else if(error.message.includes("credential")){
+                systemErrorMessage = "E-mail ou senha inválidos.";
+            }
             else{
                 systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde."
             }

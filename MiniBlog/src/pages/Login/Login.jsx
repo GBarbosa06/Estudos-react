@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setError(null);
 
     const user = {
       email,
@@ -24,6 +24,12 @@ const Login = () => {
     const res = await login(user);
     console.log(res);
   }
+
+  useEffect(() => {
+    if(authError){
+      setError(authError);
+    }
+  }, [authError])
 
 
   return (
