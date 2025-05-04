@@ -22,10 +22,24 @@ const CreatePost = () => {
     setFormError("");
 
     //URL validation:
+    try{
+      new URL(image)
 
+    } catch (error) {
+      setFormError("A imagem precisa ser uma URL.");
+    }
     //tags array
+    const tagsArray = tags.map((tag) => tag.trim().toLowerCase());
+    setTags(tagsArray);
 
     //check values
+    if(!title || !image || !body || !tags) {
+      setFormError("Por favor, preencha todos os campos.");
+    }
+
+
+    if(formError) return;
+
 
     insertDocument({
       title,
@@ -37,7 +51,7 @@ const CreatePost = () => {
     })
 
     //redirect to home page
-    
+    navigate("/");
   };
 
   return (
