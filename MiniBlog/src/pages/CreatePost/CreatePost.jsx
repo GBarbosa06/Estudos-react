@@ -3,6 +3,7 @@ import styles from "./CreatePost.module.css"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuthValue } from "../../context/AuthContext"
+import { useInsertDocument } from "../../hooks/useInsertDocument";
 
 const CreatePost = () => {
 
@@ -13,10 +14,31 @@ const CreatePost = () => {
   const [formError, setFormError] = useState(null);
 
   const { user } = useAuthValue();
-
+  const { insertDocument, response } = useInsertDocument("posts");
+  const navigate = useNavigate();
+  
   const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormError("");
 
-  }
+    //URL validation:
+
+    //tags array
+
+    //check values
+
+    insertDocument({
+      title,
+      image,
+      body,
+      tags,
+      uid: user.uid,
+      createdBy: user.displayName,
+    })
+
+    //redirect to home page
+    
+  };
 
   return (
     <div className={styles.create_post}>
@@ -66,12 +88,17 @@ const CreatePost = () => {
             onChange={(e) => setTags(e.target.value.split(","))}
           />
         </label>
-        <button className="btn">Criar post</button>
-        <button className={`${styles.btnCancel} btn`}>Cancelar</button>
-        {formError && <p className="error">{formError}</p>}
-        <p>Depois de criar o post, você poderá editá-lo ou excluí-lo.</p>
-        <p>Você pode visualizar o post na página inicial.</p>
-        <p>Se você não estiver satisfeito com o post, poderá excluí-lo a qualquer momento.</p>
+
+        {!response.loading && <button className="btn">Criar post!</button>}
+        {response.loading && (
+          <button className="btn" disabled>
+            Aguarde.. .
+          </button>
+        )}
+        {(response.error || formError) && (
+          <p className="error">{response.error || formError}</p>
+        )}
+        
       </form>
     </div>
   )

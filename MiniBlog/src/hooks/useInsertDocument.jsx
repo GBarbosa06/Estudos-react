@@ -25,7 +25,7 @@ export const useInsertDocument = (docCollection) => {
 
     const [cancelled, setCancelled] = useState(false);
 
-    const checkIfIsCancelled = () => {
+    const checkIfIsCancelled = (action) => {
         if(!cancelled) {
             dispatch(action);
         }
@@ -54,4 +54,4 @@ export const useInsertDocument = (docCollection) => {
     }, []);
 
     return { insertDocument, response };
-}
+};
