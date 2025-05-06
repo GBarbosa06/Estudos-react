@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styles from "./PostDetail.module.css";
 
 const PostDetail = ({ post }) => {
-    //! fix css centering
   return (
     <div className={styles.post_detail}>
       <img src={post.image} alt={post.title} />
@@ -11,7 +10,7 @@ const PostDetail = ({ post }) => {
       <p className={styles.createdby}>por: {post.createdBy}</p>
       <div className={styles.tags}>
         {post.tags.map((tag) => (
-          <p key={tag}>
+          <p key={tag} className={styles.tag}>
             <span>#</span>
             {tag}
           </p>
