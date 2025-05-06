@@ -10,7 +10,7 @@ const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [body, setBody] = useState("");
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState("");
   const [formError, setFormError] = useState(null);
 
   const { user } = useAuthValue();
@@ -29,11 +29,11 @@ const CreatePost = () => {
       setFormError("A imagem precisa ser uma URL.");
     }
     //tags array
-    const tagsArray = tags.map((tag) => tag.trim().toLowerCase());
+    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
     setTags(tagsArray);
 
     //check values
-    if(!title || !image || !body || !tags) {
+    if (!title || !image || !body || tagsArray.length === 0 || tagsArray.every(t => t === "")) {
       setFormError("Por favor, preencha todos os campos.");
     }
 
@@ -99,7 +99,7 @@ const CreatePost = () => {
             required 
             placeholder="Insira as tags separadas por vírgula"
             value={tags}
-            onChange={(e) => setTags(e.target.value.split(","))}
+            onChange={(e) => setTags(e.target.value)}
           />
         </label>
 
