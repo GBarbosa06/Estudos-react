@@ -109,7 +109,7 @@ const CreatePost = () => {
             Aguarde.. .
           </button>
         )}
-        <button className={`btn ${styles.btnCancel}`} onClick={() => {navigate("/")}}>Cancelar</button>
+        <button className="btn btn-danger" onClick={() => {navigate("/")}}>Cancelar</button>
         {(response.error || formError) && (
           <p className="error">{response.error || formError}</p>
         )}

@@ -17,7 +17,7 @@ textarea:focus {
 }
 
 a,
-nav button {
+nav, button {
   text-decoration: none;
   background-color: transparent;
   border: none;
@@ -100,6 +100,10 @@ textarea::placeholder {
   background-color: #000;
 }
 
+.btn-danger{
+  background-color: #f44336;
+  color: #ffffff;
+}
 .btn.btn-danger:hover {
   background-color: #dc3545;
 }

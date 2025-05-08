@@ -16,12 +16,3 @@ button{
 
 }
 
-.btnCancel{
-    background-color: #f44336;
-    color: #ffffff;
-}
-
-.btnCancel:hover{
-    background-color: #dc3545;
-    color: white;
-}
