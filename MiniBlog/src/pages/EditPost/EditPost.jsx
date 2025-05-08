@@ -3,7 +3,7 @@ import styles from "./EditPost.module.css"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuthValue } from "../../context/AuthContext"
-import { useInsertDocument } from "../../hooks/useInsertDocument";
+import { useUpdateDocument } from "../../hooks/useUpdateDocument"
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 import { useParams } from "react-router-dom";
 
@@ -27,7 +27,7 @@ const EditPost = () => {
   }, [post])
 
   const { user } = useAuthValue();
-  const { insertDocument, response } = useInsertDocument("posts");
+  const { updateDocument, response } = useUpdateDocument("posts");
   const navigate = useNavigate();
   
   const handleSubmit = (e) => {
@@ -54,7 +54,7 @@ const EditPost = () => {
     if(formError) return;
 
 
-    insertDocument({
+    updateDocument(id, {
       title,
       image,
       body,
@@ -64,7 +64,7 @@ const EditPost = () => {
     })
 
     //redirect to home page
-    navigate("/");
+    navigate("/dashboard");
   };
 
   return (
@@ -124,7 +124,7 @@ const EditPost = () => {
             Aguarde.. .
           </button>
         )}
-        <button className="btn btn-danger" onClick={() => {navigate("/")}}>Cancelar</button>
+        <button className="btn btn-danger" onClick={() => {navigate("/dashboard")}}>Cancelar</button>
         {(response.error || formError) && (
           <p className="error">{response.error || formError}</p>
         )}
