@@ -41,6 +41,8 @@
 .post_row{
     align-items: center;
     border-bottom: 1px solid #eee;
+    max-width: 100%;
+    flex-wrap: wrap;
 }
 
 .post_row p{
