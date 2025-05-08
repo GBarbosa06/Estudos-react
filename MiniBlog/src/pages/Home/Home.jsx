@@ -1,4 +1,4 @@
-import styles from "./home.module.css";
+import styles from "./Home.module.css";
 
 import { useState } from "react";
 import { useNavigate, Link} from "react-router-dom";
