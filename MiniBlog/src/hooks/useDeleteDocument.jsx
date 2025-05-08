@@ -35,7 +35,7 @@ export const useDeleteDocument = (docCollection) => {
         checkIfIsCancelled({ type: "LOADING" });
         
         try{
-            const deletedDocument = await deleteDoc(doc(docCollection, id));
+            const deletedDocument = await deleteDoc(doc(db, docCollection, id));
 
             checkIfIsCancelled({
                 type: "DELETED_DOCUMENT",
